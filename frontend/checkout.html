@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkout - SachBite</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  .checkout-wrap { max-width: 560px; margin: 40px auto; padding: 0 20px; }
+  .checkout-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:26px; margin-bottom:20px; }
+  .checkout-card h3 { margin-bottom:16px; }
+  .cart-item-row { display:flex; justify-content:space-between; align-items:center; font-size:14px; margin-bottom:12px; }
+  .cart-item-row .qty-btns button { border:1px solid var(--border); background:#fff; width:26px; height:26px; border-radius:6px; cursor:pointer; }
+  .form-group { margin-bottom:14px; }
+  .form-group label { display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+  .form-group input, .form-group textarea { width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:10px; font-size:14px; outline:none; }
+  .total-line { display:flex; justify-content:space-between; font-weight:700; font-size:16px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border); }
+  .btn-location { width:100%; background:#fff; border:1.5px solid var(--primary); color:var(--primary); border-radius:10px; padding:11px; font-weight:700; font-size:13px; cursor:pointer; margin-bottom:14px; }
+  .btn-location:hover { background: var(--primary-light); }
+  #locationPreviewMap { height: 180px; border-radius: 12px; margin-bottom: 14px; display:none; }
+  .location-status { font-size:12px; color:var(--green); font-weight:600; margin-bottom:10px; display:none; }
+
+  .payment-options { display:flex; flex-direction:column; gap:10px; }
+  .payment-opt { display:flex; align-items:center; gap:12px; border:1.5px solid var(--border); border-radius:10px; padding:13px 16px; cursor:pointer; font-weight:600; font-size:14px; transition:0.15s; }
+  .payment-opt:hover { border-color: var(--primary); }
+  .payment-opt.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+  .payment-opt input { accent-color: var(--primary); width:16px; height:16px; }
+  .payment-opt .icon { font-size:18px; }
+  .payment-note { font-size:11.5px; color:var(--text-gray); margin-top:6px; }
+
+  .upi-direct-box { display:none; margin-top:16px; padding:18px; background: var(--primary-light); border-radius:12px; text-align:center; }
+  .upi-direct-box.show { display:block; }
+  .upi-direct-box img { width:180px; height:180px; margin:10px auto; border-radius:10px; background:#fff; padding:8px; }
+  .btn-upi-app { display:inline-block; background: var(--primary); color:#fff; text-decoration:none; padding:12px 24px; border-radius:30px; font-weight:700; font-size:14px; margin:10px 0; }
+  .btn-upi-app:hover { background: var(--primary-dark); }
+  .upi-amount { font-size:22px; font-weight:800; color: var(--primary); margin:6px 0; }
+</style>
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#ff7a1a" />
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="topbar" id="headerRoot"></header>
+
+<div class="checkout-wrap">
+  <div class="checkout-card">
+    <h3 data-i18n="your_cart">🛒 Your Cart</h3>
+    <div id="cartItems"></div>
+    <div class="total-line"><span data-i18n="item_total">Item Total</span><span id="itemTotal">₹0</span></div>
+
+    <div style="display:flex; gap:8px; margin:12px 0;">
+      <input type="text" id="couponInput" placeholder="Coupon code (jaise SAVE30)" style="flex:1; padding:10px 12px; border:1px solid var(--border); border-radius:8px; text-transform:uppercase;" />
+      <button class="btn" id="applyCouponBtn" style="border:1.5px solid var(--primary); background:#fff; color:var(--primary); border-radius:8px; padding:10px 16px; font-weight:700; cursor:pointer;">Apply</button>
+    </div>
+    <div id="couponMessage" style="font-size:13px; margin-bottom:8px; display:none;"></div>
+    <div class="total-line" id="couponDiscountLine" style="display:none; color:var(--green); font-weight:600;"><span>Coupon Discount</span><span id="couponDiscountAmount">-₹0</span></div>
+
+    <div class="total-line" id="deliveryLine"><span data-i18n="delivery">Delivery</span><span id="deliveryAmount">₹0</span></div>
+    <div id="minOrderWarning" style="display:none; color:var(--red); font-size:13px; font-weight:600; margin:8px 0;"></div>
+    <div class="total-line"><span data-i18n="grand_total">Grand Total</span><span id="grandTotal">₹0</span></div>
+  </div>
+
+  <div class="checkout-card">
+    <h3 data-i18n="delivery_details">📍 Delivery Details</h3>
+    <div class="form-group">
+      <label data-i18n="label_fullname">Name</label>
+      <input type="text" id="custName" data-i18n-placeholder="placeholder_fullname" placeholder="Your full name" />
+    </div>
+    <div class="form-group">
+      <label data-i18n="label_phone">Phone</label>
+      <input type="text" id="custPhone" data-i18n-placeholder="phone_placeholder" placeholder="Phone number" />
+    </div>
+    <div class="form-group">
+      <label data-i18n="label_address">Address</label>
+      <textarea id="custAddress" rows="2" data-i18n-placeholder="placeholder_address" placeholder="Delivery address"></textarea>
+    </div>
+    <div class="form-group">
+      <label data-i18n="label_instructions">Special Instructions (optional)</label>
+      <textarea id="custInstructions" rows="2" maxlength="200" data-i18n-placeholder="placeholder_instructions" placeholder="e.g. kam mirchi, bell na bajayein"></textarea>
+    </div>
+
+    <button class="btn-location" id="useLocationBtn" data-i18n="use_location">📍 Use My Current Location (for delivery tracking)</button>
+    <div class="location-status" id="locationStatus" data-i18n="location_captured">✅ Location captured! Delivery boy will deliver here.</div>
+    <div id="locationPreviewMap"></div>
+  </div>
+
+  <div class="checkout-card">
+    <h3 data-i18n="payment_method">💳 Payment Method</h3>
+    <div class="payment-options" id="paymentOptions">
+      <label class="payment-opt selected">
+        <input type="radio" name="payment" value="Cash on Delivery" checked />
+        <span class="icon">💵</span> <span data-i18n="cod">Cash on Delivery</span>
+      </label>
+      <label class="payment-opt">
+        <input type="radio" name="payment" value="UPI (Direct)" />
+        <span class="icon">📱</span> <span data-i18n="upi_direct">UPI (Google Pay / PhonePe / Paytm) — Direct</span>
+      </label>
+      <label class="payment-opt" id="cardPaymentOpt">
+        <input type="radio" name="payment" value="Credit/Debit Card" id="cardPaymentRadio" />
+        <span class="icon">💳</span> <span data-i18n="card">Credit / Debit Card</span>
+        <span id="cardComingSoonBadge" style="display:none; font-size:11px; font-weight:700; background:#fef3c7; color:#b45309; padding:2px 8px; border-radius:10px; margin-left:auto;">Coming Soon</span>
+      </label>
+    </div>
+
+    <div class="upi-direct-box" id="upiDirectBox">
+      <div data-i18n="pay_this_amount">Pay this amount:</div>
+      <div class="upi-amount" id="upiAmountDisplay">₹0</div>
+      <img id="upiQrImage" src="" alt="UPI QR Code" />
+      <div><a href="#" id="upiAppLink" class="btn-upi-app" data-i18n="pay_via_upi">📱 Pay via UPI App</a></div>
+      <div style="font-size:12px; color:var(--text-gray); margin-bottom:12px;" data-i18n="upi_note_1">On mobile, tap the button above (GPay/PhonePe will open directly), or scan the QR code.</div>
+      <div class="form-group" style="text-align:left;">
+        <label data-i18n="utr_label">Enter UPI Transaction/Reference ID (UTR) after payment</label>
+        <input type="text" id="upiReferenceInput" data-i18n-placeholder="utr_placeholder" placeholder="e.g. 123456789012" />
+      </div>
+    </div>
+
+    <div class="payment-note" data-i18n="upi_note_2">In Direct UPI, money comes straight to our account — after paying, please enter your UTR number, we'll verify and confirm your order. Card payment is secured via Razorpay.</div>
+    <button class="btn btn-primary" style="width:100%; padding:14px; margin-top:16px;" id="placeOrderBtn" data-i18n="place_order">Place Order</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/images.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main-cart.js"></script>
+<script src="js/customer-layout.js"></script>
+<script>renderCustomerHeader("checkout.html");</script>
+<script src="js/site-settings.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

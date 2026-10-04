@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="../icons/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>All Orders - SachBite</title>
+<link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+
+<aside class="sidebar" id="sidebarRoot"></aside>
+
+<main class="main">
+  <div class="topbar" id="topbarRoot"></div>
+
+  <div class="content">
+    <div class="page-head">
+      <div>
+        <h2>All Orders</h2>
+        <p>Manage every customer order from one dashboard.</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon orange">🛍️</div>
+          <div>
+            <div class="label">Total Orders</div>
+            <div class="value" id="totalOrders">0</div>
+            <div class="sub">Orders received</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">₹</div>
+          <div>
+            <div class="label">Total Sales</div>
+            <div class="value" id="totalSales">Rs 0</div>
+            <div class="sub">Total earnings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-filters" style="display:flex; gap:10px; margin: 16px 0; flex-wrap:wrap;">
+      <input type="text" id="orderSearchInput" placeholder="🔍 Order ID, naam ya phone se search karein..." style="flex:1; min-width:200px; padding:10px 14px; border:1px solid var(--border); border-radius:10px; font-size:13px;" />
+      <select id="orderDateFilter" style="padding:10px 14px; border:1px solid var(--border); border-radius:10px; font-size:13px;">
+        <option value="all">Sabhi Orders</option>
+        <option value="today">Aaj Ke</option>
+        <option value="week">Is Hafte Ke</option>
+      </select>
+      <button id="exportCsvBtn" style="padding:10px 16px; border:1.5px solid var(--primary); background:#fff; color:var(--primary); border-radius:10px; font-size:13px; font-weight:700; cursor:pointer;">⬇️ CSV Export</button>
+    </div>
+
+    <div id="ordersContainer"></div>
+  </div>
+</main>
+
+<script src="../js/admin-guard.js"></script>
+<script src="../js/layout.js"></script>
+<script>
+  renderSidebar("dashboard.html");
+  renderTopbar("Restaurant Dashboard", '<button class="btn-clear" id="clearAllBtn">🗑️ Clear All Orders</button>');
+</script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

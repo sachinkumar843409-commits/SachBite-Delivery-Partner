@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="../icons/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Settings - SachBite</title>
+<link rel="stylesheet" href="../css/dashboard.css" />
+<style>
+  .settings-wrap { max-width: 560px; }
+  .panel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+  .panel h3 { font-size: 16px; margin-bottom: 18px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+  .form-group input { width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:10px; font-size:14px; outline:none; }
+  .row-2 { display:flex; gap: 14px; }
+  .row-2 .form-group { flex:1; }
+  .btn-save-settings { background: var(--primary); color:#fff; border:none; border-radius: 30px; padding: 12px 24px; font-weight:700; cursor:pointer; }
+  .success-msg { color: var(--green); font-size: 13px; font-weight: 600; margin-top: 10px; display:none; }
+  .error-msg { color: var(--red); font-size: 13px; font-weight: 600; margin-top: 10px; display:none; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebarRoot"></aside>
+
+<main class="main">
+  <div class="topbar" id="topbarRoot"></div>
+
+  <div class="content">
+    <div class="page-head">
+      <div>
+        <h2>Settings</h2>
+        <p>Restaurant ki basic settings manage karein.</p>
+      </div>
+    </div>
+
+    <div class="settings-wrap">
+      <div class="panel">
+        <h3>🏪 Restaurant Info</h3>
+        <div class="form-group">
+          <label for="restaurantName">Restaurant Name</label>
+          <input type="text" id="restaurantName" />
+        </div>
+        <div class="form-group">
+          <label for="address">Location (header pill, hero section aur footer me dikhti hai)</label>
+          <input type="text" id="address" />
+          <div style="font-size:11.5px; color:var(--text-gray); margin-top:4px;">Chhota area/city naam yahan bharein — jaise "Kanti, Muzaffarpur". Save karne ke baad website refresh karke check karein.</div>
+        </div>
+        <div class="row-2">
+          <div class="form-group">
+            <label for="openTime">Opening Time</label>
+            <input type="time" id="openTime" />
+          </div>
+          <div class="form-group">
+            <label for="closeTime">Closing Time</label>
+            <input type="time" id="closeTime" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="deliveryRadiusKm">Delivery Radius (km)</label>
+          <input type="number" id="deliveryRadiusKm" />
+        </div>
+        <div class="form-group">
+          <label for="adminName">Admin Name</label>
+          <input type="text" id="adminName" />
+        </div>
+        <button class="btn-save-settings" id="saveInfoBtn">Save Changes</button>
+        <div class="success-msg" id="infoSuccess">✅ Settings saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>🚚 Delivery &amp; Pricing</h3>
+        <div class="form-group">
+          <label for="minOrderAmount">Minimum Order Amount (₹)</label>
+          <input type="number" id="minOrderAmount" />
+        </div>
+        <div class="form-group">
+          <label for="deliveryFee">Delivery Fee (₹, jab order free-delivery limit se kam ho)</label>
+          <input type="number" id="deliveryFee" />
+        </div>
+        <div class="form-group">
+          <label for="freeDeliveryAbove">Free Delivery Above (₹)</label>
+          <input type="number" id="freeDeliveryAbove" />
+        </div>
+        <div class="row-2">
+          <div class="form-group">
+            <label for="deliveryTimeMin">Delivery Time — Minimum (minutes)</label>
+            <input type="number" id="deliveryTimeMin" />
+          </div>
+          <div class="form-group">
+            <label for="deliveryTimeMax">Delivery Time — Maximum (minutes)</label>
+            <input type="number" id="deliveryTimeMax" />
+          </div>
+        </div>
+        <div style="font-size:11.5px; color:var(--text-gray); margin-top:4px; margin-bottom:12px;">Yeh values homepage ke "How does SachBite work?" section mein automatically dikhti hain — save karne ke baad website refresh karke check karein.</div>
+        <button class="btn-save-settings" id="saveDeliveryBtn">Save Changes</button>
+        <div class="success-msg" id="deliverySuccess">✅ Settings saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>🏢 Business Registration</h3>
+        <div class="form-group">
+          <label for="udyamNumber">Udyam Registration Number</label>
+          <input type="text" id="udyamNumber" placeholder="e.g. UDYAM-BR-23-0133153" />
+        </div>
+        <div class="form-group">
+          <label for="fssaiNumber">FSSAI License Number</label>
+          <input type="text" id="fssaiNumber" placeholder="Jab license mil jaye tab yahan daalein (14-digit number)" />
+        </div>
+        <div style="font-size:11.5px; color:var(--text-gray); margin-top:4px; margin-bottom:12px;">Yeh homepage par (footer aur "How does SachBite work?" section mein) trust signal ke roop mein dikhta hai — khali chhodne par kuch nahi dikhta.</div>
+        <button class="btn-save-settings" id="saveUdyamBtn">Save Changes</button>
+        <div class="success-msg" id="udyamSuccess">✅ Settings saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>ℹ️ About Us (Home page par dikhta hai)</h3>
+        <div class="form-group">
+          <label for="aboutText">About Text</label>
+          <textarea id="aboutText" rows="4" style="width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:10px; font-size:14px; outline:none; font-family:inherit;" placeholder="Apne restaurant/business ke baare me likhein..."></textarea>
+        </div>
+        <button class="btn-save-settings" id="saveAboutBtn">Save About Text</button>
+        <div class="success-msg" id="aboutSuccess">✅ About text saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>📧 Contact Info (Home page par dikhta hai)</h3>
+        <div class="form-group">
+          <label for="contactEmail">Contact Email</label>
+          <input type="email" id="contactEmail" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="contactPhone">Phone Number</label>
+          <input type="text" id="contactPhone" placeholder="e.g. +91 93040 96306" />
+        </div>
+        <div class="form-group">
+          <label for="contactAddress">Full Address</label>
+          <input type="text" id="contactAddress" placeholder="e.g. Kanti, Muzaffarpur, Bihar - 843109" />
+        </div>
+        <div class="form-group">
+          <label for="supportHours">Support Hours</label>
+          <input type="text" id="supportHours" placeholder="e.g. 24x7 Support" />
+        </div>
+        <button class="btn-save-settings" id="saveContactBtn">Save Contact Info</button>
+        <div class="success-msg" id="contactSuccess">✅ Contact info saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>🔥 Home Page Offer Banner</h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Yeh hero section ke top-right corner me dikhta hai (jaise "🔥 TODAY'S OFFER — Up to 50% OFF").</p>
+        <div class="form-group">
+          <label for="heroOfferTag">Small Tag</label>
+          <input type="text" id="heroOfferTag" placeholder="🔥 TODAY'S OFFER" />
+        </div>
+        <div class="form-group">
+          <label for="heroOfferTitle">Main Offer Text</label>
+          <input type="text" id="heroOfferTitle" placeholder="Up to 50% OFF" />
+        </div>
+        <div class="form-group">
+          <label for="heroOfferSubtitle">Subtitle</label>
+          <input type="text" id="heroOfferSubtitle" placeholder="On Selected Items" />
+        </div>
+        <button class="btn-save-settings" id="saveOfferBtn">Save Offer Banner</button>
+        <div class="success-msg" id="offerSuccess">✅ Offer banner updated!</div>
+      </div>
+
+      <div class="panel">
+        <h3>📱 UPI Payment Settings (Direct UPI)</h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Yahan apna UPI ID daalein — customer checkout par isi par seedha GPay/PhonePe se payment kar sakega (koi middleman/fee nahi).</p>
+        <div class="form-group">
+          <label for="businessUpiId">Business UPI ID</label>
+          <input type="text" id="businessUpiId" placeholder="jaise: sachinkumar@paytm" />
+        </div>
+        <div class="form-group">
+          <label for="businessUpiName">Payee Name (customer ko dikhega)</label>
+          <input type="text" id="businessUpiName" placeholder="SachBite" />
+        </div>
+        <button class="btn-save-settings" id="saveUpiBtn">Save UPI Settings</button>
+        <div class="success-msg" id="upiSuccess">✅ UPI settings saved!</div>
+      </div>
+
+      <div class="panel">
+        <h3>💳 Razorpay Payment Gateway <span id="rzpStatusBadge" style="font-size:11px; font-weight:700; padding:3px 8px; border-radius:10px; margin-left:6px;"></span></h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Card/Net-Banking ke liye Razorpay. Jab tak yahan Key ID + Key Secret daal kar "Enable" na karein, customer checkout aur subscription payment me ye option "Coming Soon" dikhega — UPI (Direct) tab bhi kaam karta rahega.</p>
+        <div class="form-group">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="razorpayEnabled" style="width:auto;" />
+            Razorpay Enable karein
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="razorpayKeyId">Razorpay Key ID</label>
+          <input type="text" id="razorpayKeyId" placeholder="rzp_live_xxxxxxxxxxxx" />
+        </div>
+        <div class="form-group">
+          <label for="razorpayKeySecret">Razorpay Key Secret</label>
+          <input type="password" id="razorpayKeySecret" placeholder="Naya secret daalne ke liye hi type karein — khaali chhodne par purana wahi rahega" />
+        </div>
+        <button class="btn-save-settings" id="saveRazorpayBtn">Save Razorpay Settings</button>
+        <div class="success-msg" id="razorpaySuccess">✅ Razorpay settings saved!</div>
+        <div class="error-msg" id="razorpayError"></div>
+      </div>
+
+      <div class="panel">
+        <h3>💎 Subscription Plan Prices</h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Restaurants ke liye Pro/Business plan ki monthly price — Monetization page par payment isi price par collect hoga.</p>
+        <div class="form-group">
+          <label for="subscriptionPricePro">Pro Plan (₹ / month)</label>
+          <input type="number" id="subscriptionPricePro" min="0" placeholder="499" />
+        </div>
+        <div class="form-group">
+          <label for="subscriptionPriceBusiness">Business Plan (₹ / month)</label>
+          <input type="number" id="subscriptionPriceBusiness" min="0" placeholder="1499" />
+        </div>
+        <button class="btn-save-settings" id="saveSubPricesBtn">Save Plan Prices</button>
+        <div class="success-msg" id="subPricesSuccess">✅ Plan prices updated!</div>
+      </div>
+
+      <div class="panel">
+        <h3>🛵 Delivery Partner Settings</h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Har delivery ka rate, aur daily target + bonus (delivery partner ke Home tab par target progress dikhega).</p>
+        <div class="form-group">
+          <label for="deliveryPartnerEarningPerOrder">Har Delivery Ka Rate (₹)</label>
+          <input type="number" id="deliveryPartnerEarningPerOrder" min="0" placeholder="30" />
+        </div>
+        <div class="form-group">
+          <label for="deliveryDailyTarget">Daily Target (kitni deliveries) — 0 rakhein to target off</label>
+          <input type="number" id="deliveryDailyTarget" min="0" placeholder="jaise: 20" />
+        </div>
+        <div class="form-group">
+          <label for="deliveryTargetBonus">Target Poora Hone Par Bonus (₹)</label>
+          <input type="number" id="deliveryTargetBonus" min="0" placeholder="jaise: 50" />
+        </div>
+        <button class="btn-save-settings" id="saveDeliverySettingsBtn">Delivery Settings Save Karein</button>
+        <div class="success-msg" id="deliverySettingsSuccess">✅ Delivery settings updated!</div>
+      </div>
+
+      <div class="panel">
+        <h3>🔒 Change Admin Password</h3>
+        <div class="form-group">
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" placeholder="Current password" />
+        </div>
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" placeholder="New password" />
+        </div>
+        <button class="btn-save-settings" id="savePasswordBtn">Update Password</button>
+        <div class="success-msg" id="passSuccess">✅ Password updated!</div>
+        <div class="error-msg" id="passError">❌ Current password galat hai.</div>
+      </div>
+
+      <div class="panel">
+        <h3>🛡️ Forgot Password Recovery</h3>
+        <p style="font-size:12.5px; color:var(--text-gray); margin-top:-12px; margin-bottom:14px;">Agar aap password bhool jaayein, to login page par "Password bhool gaye?" se yeh sawaal-jawaab reset karne ke kaam aayega. Isse set karne ke liye current password bharna zaroori hai.</p>
+        <div class="form-group">
+          <label for="securityQuestion">Security Question</label>
+          <input type="text" id="securityQuestion" placeholder="e.g. Aapke pehle pet ka naam kya tha?" />
+        </div>
+        <div class="form-group">
+          <label for="securityAnswer">Answer</label>
+          <input type="text" id="securityAnswer" placeholder="Iska jawaab yaad rakhna zaroori hai" />
+        </div>
+        <div class="form-group">
+          <label for="securityCurrentPassword">Current Password (confirm karne ke liye)</label>
+          <input type="password" id="securityCurrentPassword" placeholder="Current password" />
+        </div>
+        <button class="btn-save-settings" id="saveSecurityBtn">Security Question Save Karein</button>
+        <div class="success-msg" id="securitySuccess">✅ Security question saved!</div>
+        <div class="error-msg" id="securityError"></div>
+      </div>
+    </div>
+
+    <!-- ===== Staff Accounts ===== -->
+    <div class="settings-card">
+      <h3>👥 Staff Accounts</h3>
+      <p style="color:var(--text-gray); font-size:13px; margin-bottom:16px;">
+        Apne staff members ko alag login dein taaki sab shared password use na karein. Har staff apne khud ke username/password se login kar sakega.
+      </p>
+
+      <div id="staffList" style="margin-bottom:20px;"></div>
+
+      <div class="form-group">
+        <label for="staffName">Staff Ka Naam</label>
+        <input type="text" id="staffName" placeholder="e.g. Ramesh Kumar" />
+      </div>
+      <div class="form-group">
+        <label for="staffUsername">Username</label>
+        <input type="text" id="staffUsername" placeholder="e.g. ramesh" />
+      </div>
+      <div class="form-group">
+        <label for="staffPassword">Password</label>
+        <input type="password" id="staffPassword" placeholder="Kam se kam 6 characters" />
+      </div>
+      <button class="btn-save-settings" id="addStaffBtn">+ Staff Add Karein</button>
+      <div class="success-msg" id="staffSuccess">✅ Staff account ban gaya!</div>
+      <div class="error-msg" id="staffError"></div>
+    </div>
+  </div>
+</main>
+
+<script src="../js/admin-guard.js"></script>
+<script src="../js/layout.js"></script>
+<script>
+  renderSidebar("settings.html");
+  renderTopbar("Restaurant Dashboard");
+</script>
+<script src="../js/settings.js"></script>
+</body>
+</html>

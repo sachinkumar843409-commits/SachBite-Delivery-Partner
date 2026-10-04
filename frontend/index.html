@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SachBite - Food delivered with love</title>
+<meta name="description" content="SachBite se apna favourite khana order karein — fast delivery, live tracking, aur best restaurants Muzaffarpur, Bihar mein." />
+<meta property="og:title" content="SachBite - Food delivered with love" />
+<meta property="og:description" content="Apna favourite khana order karein — fast delivery, live tracking, aur best restaurants." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sachbite.in/" />
+<meta property="og:image" content="images/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SachBite - Food delivered with love" />
+<meta name="twitter:description" content="Apna favourite khana order karein — fast delivery, live tracking, aur best restaurants." />
+<meta name="twitter:image" content="https://sachbite.in/images/og-image.png" />
+<link rel="canonical" href="https://sachbite.in/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sachbite.in/#website",
+      "name": "SachBite",
+      "url": "https://sachbite.in/",
+      "publisher": { "@id": "https://sachbite.in/#business" }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://sachbite.in/#business",
+      "name": "SachBite",
+      "description": "SachBite is an online food ordering and delivery platform serving Kanti, Muzaffarpur, Bihar.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kanti, Muzaffarpur",
+        "addressRegion": "Bihar",
+        "addressCountry": "IN"
+      },
+      "areaServed": "Kanti, Muzaffarpur, Bihar, India",
+      "email": "sachinkumar843409@gmail.com",
+      "url": "https://sachbite.in/",
+      "founder": {
+        "@type": "Person",
+        "name": "Sachin Mishra",
+        "jobTitle": "Founder & CEO"
+      },
+      "foundingDate": "2026-09",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Udyam Registration Number",
+        "value": "UDYAM-BR-23-0133153"
+      },
+      "mainEntityOfPage": "https://sachbite.in/",
+      "isPartOf": { "@id": "https://sachbite.in/#website" }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SachBite?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SachBite is an online food ordering and delivery platform serving Kanti, Muzaffarpur, Bihar. It lets customers browse menus from local restaurants, place an order, and track the delivery live on a map."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What food can I order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The menu shown on SachBite depends on what each listed restaurant currently offers — browse the Restaurants page to see available dishes near you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I place an order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ordering on SachBite takes four steps: browse restaurants and add items to your cart; sign in with a one-time password (OTP) sent to your email or phone; choose a payment method — UPI, card, or Cash on Delivery; then track your order live from the Track Order page once it's out for delivery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum order amount?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The minimum order value on SachBite is ₹99."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does delivery cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delivery is ₹30 on orders below ₹300, and free above that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does delivery take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Orders are typically delivered by our delivery partner within 30–40 minutes, depending on your distance from the restaurant."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#ff7a1a" />
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo">
+      Sach<span>Bite</span> 🛵
+      <small data-i18n="tagline">Food delivered with love ❤️</small>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="/" class="active" data-i18n="nav_home">Home</a>
+      <a href="restaurants.html" data-i18n="nav_restaurants">Restaurants</a>
+      <a href="offers.html" data-i18n="nav_offers">Offers</a>
+      <a href="track-order.html" data-i18n="nav_track">Track Order</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menu kholein">☰</button>
+
+    <div class="topbar-right">
+      <div class="location-pill"><span class="pin">📍</span> Kanti, Muzaffarpur <span>▾</span></div>
+      <a href="download-app.html" class="btn" title="App Download Karein" style="display:inline-flex; align-items:center; gap:6px; border:1.5px solid var(--primary); background:var(--primary); color:#fff; border-radius:20px; padding:8px 14px; font-weight:700; font-size:13px; text-decoration:none;">⬇️ App</a>
+      <button class="btn" id="langToggleBtn" style="border:1.5px solid var(--primary); background:#fff; color:var(--primary-text); border-radius:20px; padding:8px 14px; font-weight:700; font-size:13px; cursor:pointer;">हिं</button>
+      <button class="btn btn-primary" id="loginBtn">Login / Signup</button>
+      <a href="checkout.html" class="cart-icon">
+        🛒
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="heroSection">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Optional decorative floating food emojis (Admin > Appearance toggle). Off by default. -->
+  <div class="hero-food-decor" id="heroFoodDecor" style="display:none;">
+    <span class="decor-item d1">🍕</span>
+    <span class="decor-item d2">🍔</span>
+    <span class="decor-item d3">🍛</span>
+    <span class="decor-item d4">🍜</span>
+    <span class="decor-item d5">🍰</span>
+    <span class="decor-item d6">🍩</span>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag" data-i18n="hero_tag">🔥 FRESH FOOD • FAST DELIVERY</div>
+      <h1><span data-i18n="hero_title_1">Delicious food from SachBite,</span><br /><span data-i18n="hero_title_2">just a bite away.</span></h1>
+      <p data-i18n="hero_desc">SachBite is a local food ordering and delivery service in Kanti, Muzaffarpur, Bihar — browse nearby restaurants, order online, and track your delivery live on a map.</p>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" aria-label="Search for food or restaurants" data-i18n-placeholder="search_placeholder" placeholder="Search for pizza, burger, momos..." />
+        <button class="btn btn-primary" id="searchBtn" data-i18n="search_btn">Search</button>
+      </div>
+
+      <div class="delivering-row">
+        <span data-i18n="delivering_near">📍 Delivering near</span> <strong id="deliveringLocation">Kanti, Muzaffarpur</strong>
+        <span class="pill-green" data-i18n="fast_delivery">Fast Delivery</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img id="heroImg" src="" alt="Pizza" width="700" height="500" />
+      <div class="rating-card">
+        📍 <div><span class="num" data-i18n="launch_badge_title">Now Live</span><small data-i18n="launch_badge_location">in Kanti, Muzaffarpur</small></div>
+      </div>
+      <div class="offer-card">
+        <div class="tag" id="heroOfferTag" data-i18n="todays_offer">🔥 TODAY'S OFFER</div>
+        <div class="big" id="heroOfferTitle">Up to 50% OFF</div>
+        <small id="heroOfferSubtitle">On Selected Items</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="categories">
+  <div class="section-head">
+    <h2 data-i18n="craving_heading">What are you craving?</h2>
+  </div>
+  <div class="category-row" id="categoryRow"></div>
+</section>
+
+<section class="section container" id="restaurants">
+  <div class="section-head">
+    <h2 data-i18n="popular_restaurants">Popular restaurants</h2>
+    <a href="restaurants.html" class="view-all" data-i18n="view_all">View all →</a>
+  </div>
+  <div class="restaurant-row" id="restaurantRow"></div>
+</section>
+
+<section class="section container">
+  <div class="promo-banner">
+    <div>
+      <h2><span data-i18n="promo_heading">🏷️ HUNGRY?</span><br /><span data-i18n="promo_sub">Let's fix that! 😊</span></h2>
+      <p data-i18n="promo_desc">Order your favourite food from restaurants near you with SachBite.</p>
+      <a href="restaurants.html" class="btn btn-white" data-i18n="explore_food">Explore Food →</a>
+    </div>
+    <img id="bannerImg" src="" alt="Burger" loading="lazy" width="400" height="260" />
+  </div>
+</section>
+
+<section class="section container" id="how-it-works">
+  <div class="section-head">
+    <h2>How does SachBite work?</h2>
+  </div>
+  <div class="about-box">
+    <h3>What is SachBite?</h3>
+    <p>SachBite is an online food ordering and delivery platform serving Kanti, Muzaffarpur, Bihar. It lets customers browse menus from local restaurants, place an order, and track the delivery live on a map.</p>
+
+    <h3>What food can I order?</h3>
+    <p>The menu shown on SachBite depends on what each listed restaurant currently offers — browse the <a href="restaurants.html">Restaurants</a> page to see available dishes near you.</p>
+
+    <h3>How can I place an order?</h3>
+    <p>Ordering on SachBite takes four steps:</p>
+    <ol>
+      <li>Browse restaurants and add items to your cart.</li>
+      <li>Sign in with a one-time password (OTP) sent to your email or phone.</li>
+      <li>Choose a payment method — UPI, card, or Cash on Delivery.</li>
+      <li>Track your order live from the Track Order page once it's out for delivery.</li>
+    </ol>
+
+    <h3>What is the minimum order amount?</h3>
+    <p>The minimum order value on SachBite is <span id="minOrderAmountText">₹99</span>.</p>
+
+    <h3>How much does delivery cost?</h3>
+    <p>Delivery is <span id="deliveryFeeText">₹30</span> on orders below <span id="freeDeliveryAboveText">₹300</span>, and free above that.</p>
+
+    <h3>How long does delivery take?</h3>
+    <p>Orders are typically delivered by our delivery partner within <span id="deliveryTimeText">30–40 minutes</span>, depending on your distance from the restaurant.</p>
+
+    <div id="udyamMainLine" style="margin-top:16px; font-size:13px; color:var(--text-gray); display:none;">
+      🏢 SachBite is a registered business — Udyam Registration: <strong id="udyamNumberTextMain"></strong>
+    </div>
+    <div id="fssaiMainLine" style="margin-top:6px; font-size:13px; color:var(--text-gray); display:none;">
+      🍽️ FSSAI Licensed — License No: <strong id="fssaiNumberTextMain"></strong>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="about">
+  <div class="section-head">
+    <h2 data-i18n="about_heading">About Us</h2>
+  </div>
+  <div class="about-box">
+    <h3 style="margin-bottom:10px;">🌟 Our Vision</h3>
+    <p>SachBite's vision is not just to become a food delivery platform, but to build a trusted, customer-first food-tech ecosystem across India.</p>
+    <p style="margin-top:10px;">We want every customer to easily discover their favorite food, order at the right price, and enjoy a reliable delivery experience at their doorstep.</p>
+    <p style="margin-top:10px;">At the same time, our goal is to empower local restaurants and small food businesses with technology, helping them reach new customers and grow their businesses.</p>
+    <p style="margin-top:10px;">Our dream is simple — to bring the taste of every city closer to every customer. ❤️</p>
+
+    <h3 style="margin-top:22px; margin-bottom:10px;">📅 Our Journey</h3>
+    <p>SachBite was founded in September 2026 with a vision to create a better food experience for customers while providing new growth opportunities for local restaurants.</p>
+
+    <p style="margin-top:22px;">Thank You for Choosing SachBite</p>
+    <p style="font-weight:700;">Founder &amp; CEO — Sachin Mishra</p>
+    <p style="margin-top:14px; font-style:italic; color:var(--text-gray);">SachBite — Discover Local. Order Better. Enjoy More.</p>
+  </div>
+</section>
+
+<section class="section container" id="contact">
+  <div class="section-head">
+    <h2 data-i18n="contact_heading">Contact Us</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">📧</div>
+      <div>
+        <div class="contact-label" data-i18n="email_us">Email us</div>
+        <a href="mailto:sachinkumar843409@gmail.com" id="contactEmail" class="contact-value">sachinkumar843409@gmail.com</a>
+      </div>
+    </div>
+    <div class="contact-card" id="contactPhoneCard" style="display:none;">
+      <div class="contact-icon">📞</div>
+      <div>
+        <div class="contact-label" data-i18n="call_us">Call us</div>
+        <a href="#" id="contactPhone" class="contact-value"></a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🕒</div>
+      <div>
+        <div class="contact-label" data-i18n="support">Support</div>
+        <div class="contact-value" id="supportHours" data-i18n="support_hours">24x7 Support</div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label" data-i18n="location_label">Location</div>
+        <div class="contact-value" id="contactLocation">Kanti, Muzaffarpur</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  © 2026 SachBite. <span data-i18n="footer_text">Food delivered with love ❤️</span> — <span id="footerLocation">Kanti, Muzaffarpur</span> · <a href="terms.html" style="color:inherit;">Terms &amp; Privacy</a> · <a href="download-app.html" style="color:inherit;">📲 App Download</a> · <a href="partner-login.html" style="color:inherit;">Restaurant Partner Login</a> · <a href="delivery-login.html" style="color:inherit;">🛵 Delivery Partner Login</a>
+  <div id="udyamFooterLine" style="font-size:11.5px; opacity:0.8; margin-top:6px; display:none;">🏢 Udyam Registered — <span id="udyamNumberText"></span></div>
+  <div id="fssaiFooterLine" style="font-size:11.5px; opacity:0.8; margin-top:4px; display:none;">🍽️ FSSAI Lic. No. — <span id="fssaiNumberText"></span></div>
+</footer>
+
+<!-- Login/Signup Modal -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <h3 data-i18n="modal_title">Login / Signup</h3>
+
+    <div id="authStepDetails">
+      <div class="form-group">
+        <label for="authName" data-i18n="label_name">Name</label>
+        <input type="text" id="authName" data-i18n-placeholder="placeholder_name" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label for="authPhone" data-i18n="label_phone">Phone Number</label>
+        <input type="text" id="authPhone" data-i18n-placeholder="placeholder_phone" placeholder="10-digit phone number" maxlength="10" />
+      </div>
+      <div class="form-group">
+        <label for="authEmail" data-i18n="label_email">Email</label>
+        <input type="email" id="authEmail" data-i18n-placeholder="placeholder_email" placeholder="you@example.com" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="authCancelBtn" data-i18n="cancel">Cancel</button>
+        <button class="btn-save" id="authSendOtpBtn" data-i18n="send_otp">Send OTP</button>
+      </div>
+    </div>
+
+    <div id="authStepOtp" style="display:none;">
+      <p id="authWelcomeNote" style="font-size:14px; font-weight:700; padding:10px 12px; border-radius:10px; margin-bottom:10px;"></p>
+      <p style="font-size:13px; color:var(--text-gray); margin-bottom:10px;">
+        <span data-i18n="otp_sent_to">OTP sent to</span> <span id="authOtpSentTo"></span>
+      </p>
+      <div class="form-group">
+        <label for="authOtp" data-i18n="label_otp">Enter OTP</label>
+        <input type="text" id="authOtp" data-i18n-placeholder="placeholder_otp" placeholder="4-digit OTP" maxlength="4" inputmode="numeric" />
+      </div>
+      <p id="authOtpDemoNote" style="font-size:12px; color:var(--primary); font-weight:600; margin-bottom:6px;"></p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="authBackBtn" data-i18n="back">← Back</button>
+        <button class="btn-save" id="authVerifyOtpBtn" data-i18n="verify_continue">Verify &amp; Continue</button>
+      </div>
+      <div style="text-align:center; margin-top:10px;">
+        <a href="#" id="authResendBtn" data-i18n="resend_otp" style="font-size:12px; color:var(--primary); font-weight:600;">Resend OTP</a>
+      </div>
+    </div>
+
+    <p id="authError" style="color:#dc2626; font-size:12px; margin-top:10px; display:none;"></p>
+  </div>
+</div>
+
+<script src="js/i18n.js"></script>
+<script src="js/images.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main-cart.js"></script>
+<script src="js/main.js"></script>
+<script src="js/site-settings.js"></script>
+</body>
+</html>
