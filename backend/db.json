@@ -1,0 +1,236 @@
+{
+  "orders": [
+    {
+      "id": "SB59621406",
+      "date": "2026-08-28T01:10:00.000Z",
+      "customer": {
+        "name": "Sachin Mishra",
+        "phone": "09304096306",
+        "address": "Kanti Kanti sapkati hospital",
+        "payment": "Cash on Delivery"
+      },
+      "items": [
+        {
+          "name": "Paneer Butter Masala",
+          "qty": 1,
+          "price": 220
+        }
+      ],
+      "itemTotal": 220,
+      "delivery": 0,
+      "grandTotal": 220,
+      "status": "Out for Delivery"
+    },
+    {
+      "id": "SB59556433",
+      "date": "2026-08-28T01:09:00.000Z",
+      "customer": {
+        "name": "Sachin Mishra",
+        "phone": "09304096306",
+        "address": "Kanti Kanti sapkati hospital",
+        "payment": "Cash on Delivery"
+      },
+      "items": [
+        {
+          "name": "Paneer Butter Masala",
+          "qty": 1,
+          "price": 220
+        }
+      ],
+      "itemTotal": 220,
+      "delivery": 0,
+      "grandTotal": 220,
+      "status": "Order Confirmed"
+    },
+    {
+      "id": "SB31118332",
+      "date": "2026-08-28T21:01:00.000Z",
+      "customer": {
+        "name": "chcg",
+        "phone": "ffffjk",
+        "address": "gcg",
+        "payment": "Cash on Delivery"
+      },
+      "items": [
+        {
+          "name": "Paneer Butter Masala",
+          "qty": 1,
+          "price": 220
+        }
+      ],
+      "itemTotal": 220,
+      "delivery": 0,
+      "grandTotal": 220,
+      "status": "Order Confirmed"
+    }
+  ],
+  "menu": [
+    {
+      "id": "M001",
+      "name": "Pizza",
+      "price": 149,
+      "icon": "🍕",
+      "category": "Main Course",
+      "available": true,
+      "image": null
+    },
+    {
+      "id": "M002",
+      "name": "Burgers",
+      "price": 99,
+      "icon": "🍔",
+      "category": "Fast Food",
+      "available": true,
+      "image": null
+    },
+    {
+      "id": "M003",
+      "name": "Momos",
+      "price": 79,
+      "icon": "🥟",
+      "category": "Snacks",
+      "available": true,
+      "image": null
+    },
+    {
+      "id": "M004",
+      "name": "Biryani",
+      "price": 129,
+      "icon": "🍛",
+      "category": "Main Course",
+      "available": true,
+      "image": null
+    },
+    {
+      "id": "M005",
+      "name": "Chinese",
+      "price": 109,
+      "icon": "🍜",
+      "category": "Main Course",
+      "available": true,
+      "image": null
+    },
+    {
+      "id": "M006",
+      "name": "Desserts",
+      "price": 89,
+      "icon": "🍰",
+      "category": "Dessert",
+      "available": true,
+      "image": null
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "R001",
+      "name": "Pizza House",
+      "tags": "Pizza • Italian • Fast Food",
+      "rating": null,
+      "reviews": null,
+      "time": "25-35 min",
+      "badge": "20% OFF",
+      "icon": "🍕",
+      "image": null,
+      "contactPhone": "",
+      "contactEmail": "",
+      "subscriptionPlan": "free",
+      "subscriptionStatus": "active",
+      "featuredStatus": "inactive",
+      "subscriptionStart": null,
+      "subscriptionEnd": null
+    },
+    {
+      "id": "R002",
+      "name": "Momo Corner",
+      "tags": "Momos • Chinese • Snacks",
+      "rating": null,
+      "reviews": null,
+      "time": "20-30 min",
+      "badge": "FREE DELIVERY",
+      "icon": "🥟",
+      "image": null,
+      "contactPhone": "",
+      "contactEmail": "",
+      "subscriptionPlan": "free",
+      "subscriptionStatus": "active",
+      "featuredStatus": "inactive",
+      "subscriptionStart": null,
+      "subscriptionEnd": null
+    },
+    {
+      "id": "R003",
+      "name": "Burger Point",
+      "tags": "Burgers • Fast Food",
+      "rating": null,
+      "reviews": null,
+      "time": "25-40 min",
+      "badge": "15% OFF",
+      "icon": "🍔",
+      "image": null,
+      "contactPhone": "",
+      "contactEmail": "",
+      "subscriptionPlan": "free",
+      "subscriptionStatus": "active",
+      "featuredStatus": "inactive",
+      "subscriptionStart": null,
+      "subscriptionEnd": null
+    }
+  ],
+  "offers": [
+    {
+      "id": "OFF001",
+      "title": "Flat 50% OFF on Pizza",
+      "discount": "50% OFF",
+      "validFrom": "2026-08-01",
+      "validUntil": "2026-09-15",
+      "image": null
+    },
+    {
+      "id": "OFF002",
+      "title": "Free Delivery on orders above ₹199",
+      "discount": "FREE DELIVERY",
+      "validFrom": "2026-08-01",
+      "validUntil": "2026-12-31",
+      "image": null
+    }
+  ],
+  "settings": {
+    "restaurantName": "SachBite",
+    "address": "Kanti, Muzaffarpur",
+    "openTime": "06:00",
+    "closeTime": "00:00",
+    "deliveryRadiusKm": 10,
+    "adminName": "Sachin Mishra",
+    "adminPassword": "admin123",
+    "adminSecurityQuestion": "Aapke pehle pet (pet animal) ka naam kya tha?",
+    "adminSecurityAnswerHash": null,
+    "restaurantLocation": {
+      "lat": 26.1197,
+      "lng": 85.391
+    },
+    "heroImage": null,
+    "bannerImage": null,
+    "heroAnimation": "none",
+    "heroFoodAnimation": false,
+    "heroFoodEmojis": "🍕 🍔 🍛 🍜 🍰",
+    "aboutText": "SachBite was founded in September 2026 with a vision to create a better food experience for customers while providing new growth opportunities for local restaurants.",
+    "contactEmail": "sachinkumar843409@gmail.com",
+    "contactPhone": "",
+    "contactAddress": "Kanti, Muzaffarpur, Bihar",
+    "supportHours": "24x7 Support",
+    "heroOfferTag": "🔥 TODAY'S OFFER",
+    "heroOfferTitle": "Up to 50% OFF",
+    "heroOfferSubtitle": "On Selected Items",
+    "businessUpiId": "",
+    "businessUpiName": "SachBite",
+    "minOrderAmount": 99,
+    "deliveryFee": 30,
+    "freeDeliveryAbove": 300,
+    "deliveryTimeMin": 30,
+    "deliveryTimeMax": 40,
+    "udyamNumber": "UDYAM-BR-23-0133153",
+    "fssaiNumber": null
+  },
+  "uploads": [],
+  "accounts": []
+}
