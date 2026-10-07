@@ -1,0 +1,63 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Card Gradient -->
+    <linearGradient id="bgCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fafafa" />
+    </linearGradient>
+
+    <!-- Main S Gradient -->
+    <linearGradient id="sGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFA000" />
+      <stop offset="35%" stop-color="#FF6B00" />
+      <stop offset="70%" stop-color="#FF3D00" />
+      <stop offset="100%" stop-color="#D50000" />
+    </linearGradient>
+
+    <!-- Speed Trails Gradient -->
+    <linearGradient id="speedGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FF7A00" />
+      <stop offset="100%" stop-color="#FF3D00" />
+    </linearGradient>
+
+    <!-- Chef Hat Gradient -->
+    <linearGradient id="hatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7A00" />
+      <stop offset="100%" stop-color="#E63900" />
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgCard)" />
+
+  <!-- Speed Lines on Left -->
+  <g transform="translate(10, 10)">
+    <rect x="110" y="160" width="55" height="15" rx="7.5" fill="url(#speedGrad)" />
+    <rect x="75" y="184" width="90" height="15" rx="7.5" fill="url(#speedGrad)" />
+    <rect x="110" y="208" width="50" height="15" rx="7.5" fill="url(#speedGrad)" />
+  </g>
+
+  <!-- Chef Hat on Top of S -->
+  <g transform="translate(265, 75) rotate(15)">
+    <rect x="-34" y="30" width="68" height="16" rx="6" fill="url(#hatGrad)" />
+    <path d="M -28 30 C -46 24 -44 -6 -24 -10 C -24 -34 24 -34 24 -10 C 44 -6 46 24 28 30 Z" fill="url(#hatGrad)" />
+  </g>
+
+  <!-- Stylized 'S' Emblem with Fork & Spoon -->
+  <g transform="translate(10, 10)">
+    <!-- Solid S Body -->
+    <path d="M 255 105 C 315 105 352 138 352 175 C 352 208 320 234 274 246 C 342 263 365 310 365 348 C 365 412 295 450 220 450 C 155 450 128 412 128 372 C 128 344 146 320 178 320 C 206 320 226 338 226 364 C 226 380 220 392 206 398 C 215 403 228 405 242 405 C 284 405 318 382 318 348 C 318 310 278 288 222 276 C 162 263 130 222 130 175 C 130 128 182 105 255 105 Z" fill="url(#sGrad)" />
+
+    <!-- White Fork (Upper S Loop) -->
+    <path d="M 172 230 C 152 202 154 162 182 138 C 210 114 256 120 298 140 C 305 144 302 156 293 152 C 256 133 218 133 195 152 C 176 168 176 193 192 214 L 250 236 L 241 260 Z" fill="#ffffff" />
+    <g transform="translate(285, 134) rotate(22)">
+      <rect x="0" y="0" width="35" height="6" rx="3" fill="#ffffff" />
+      <rect x="0" y="10" width="40" height="6" rx="3" fill="#ffffff" />
+      <rect x="0" y="20" width="40" height="6" rx="3" fill="#ffffff" />
+      <rect x="0" y="30" width="35" height="6" rx="3" fill="#ffffff" />
+    </g>
+
+    <!-- White Spoon (Lower S Loop) -->
+    <ellipse cx="295" cy="344" rx="38" ry="28" transform="rotate(-28 295 344)" fill="#ffffff" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  accent-color: #ff7a1a;
+}
+
+::selection {
+  background-color: #ff7a1a;
+  color: #ffffff;
+}
+
+/* Touch responsiveness for mobile delivery partners */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}

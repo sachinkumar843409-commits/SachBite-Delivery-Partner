@@ -1,0 +1,11 @@
+{
+  "name": "SachBite Delivery Partner",
+  "description": "Official SachBite Delivery Partner app with real-time order acceptance, GPS tracking, 4-stage delivery OTP, earnings breakdown, alerts, and safety center.",
+  "requestFramePermissions": [
+    "geolocation",
+    "notifications"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
